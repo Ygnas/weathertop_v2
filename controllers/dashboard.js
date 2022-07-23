@@ -1,13 +1,13 @@
 "use strict";
 
 const logger = require("../utils/logger");
-const playlistCollection = require("../models/playlist-store.js");
+const playlistCollection = require("../models/station-store.js").default;
 
 const dashboard = {
   index(request, response) {
     logger.info("dashboard rendering");
     const viewData = {
-      title: "Playlist Dashboard",
+      title: "WeatherTop Dashboard",
       playlists: playlistCollection
     };
     logger.info("about to render", playlistCollection);
