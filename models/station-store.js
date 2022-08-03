@@ -3,7 +3,7 @@
 const _ = require("lodash");
 const JsonStore = require("./json-store");
 
-const stationCollection = {
+const stationStore = {
     store: new JsonStore("./models/station-store.json", {
         stationCollection: [],
     }),
@@ -21,4 +21,4 @@ const stationCollection = {
     },
 }
 
-module.exports = stationCollection;
+module.exports = stationStore;

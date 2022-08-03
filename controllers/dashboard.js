@@ -1,7 +1,7 @@
 "use strict";
 
 const logger = require("../utils/logger");
-const stationCollection = require("../models/station-store.js");
+const stationStore = require("../models/station-store.js");
 const uuid = require("uuid");
 
 const dashboard = {
@@ -9,9 +9,9 @@ const dashboard = {
     logger.info("dashboard rendering");
     const viewData = {
       title: "WeatherTop Dashboard",
-      stations: stationCollection.getAllStation(),
+      stations: stationStore.getAllStation(),
     };
-    logger.info("about to render", stationCollection.getAllStation());
+    logger.info("about to render", stationStore.getAllStation());
     response.render("dashboard", viewData);
   },
   addStation(request, response) {
@@ -20,7 +20,7 @@ const dashboard = {
         name: request.body.name,
         readings: []
     }
-    stationCollection.addStation(newStation);
+    stationStore.addStation(newStation);
     response.redirect("/dashboard");
   }
 };
