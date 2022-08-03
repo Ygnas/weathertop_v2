@@ -19,6 +19,11 @@ const stationStore = {
         this.store.add(this.collection, station);
         this.store.save();
     },
+    addReading(id, reading) {
+        const station = this.getStation(id);
+        station.readings.push(reading);
+        this.store.save();
+    }
 }
 
 module.exports = stationStore;
