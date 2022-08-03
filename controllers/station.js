@@ -1,6 +1,7 @@
 "use strict";
 
 const logger = require("../utils/logger");
+const uuid = require("uuid");
 const stationStore = require("../models/station-store.js");
 const { WeatherReport } = require("../models/weatherReport");
 
@@ -15,6 +16,19 @@ const station = {
     };
     logger.info("about to render", stationStore.getStation(stationId));
     response.render("station", viewData);
+  },
+  addReading(request, response) {
+    const stationId = request.params.id;
+    const newReading = {
+        id: uuid.v1(),
+        code: request.body.code,
+        temperature: request.body.temperature,
+        windSpeed: request.body.windSpeed,
+        pressure: request.body.pressure,
+        windDirection: request.body.windDirection
+    };
+    stationStore.addReading(stationId, newReading);
+    response.redirect(`/station/${stationId}`);
   }
 };
 
