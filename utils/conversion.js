@@ -11,12 +11,26 @@ const weatherCodes = {
     800: "Thunder"
 };
 
+const weatherCodeIcons = {
+    100: "sun icon",
+    200: "cloud sun",
+    300: "cloud icon",
+    400: "cloud sun rain icon",
+    500: "cloud showers heavy icon",
+    600: "cloud rain icon",
+    700: "snowflake icon",
+    800: "bolt icon"
+}
+
 const conversion = {
     tempF(tempC) {
         return (tempC * 1.8) + 32;
     },
     currentWeather(code) {
         return weatherCodes[code];
+    },
+    weatherIcon(code) {
+        return weatherCodeIcons[code];
     },
     beafourt(windSpeed) {
         if (windSpeed < 1) {
