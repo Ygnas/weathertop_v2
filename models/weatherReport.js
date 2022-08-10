@@ -12,6 +12,7 @@ const weatherReport = {
         this.longitude = "Lng: " + station.longitude;
         if (typeof latestReading == 'undefined') return 0;
         this.code = latestReading.code;
+        this.icon = conversion.weatherIcon(this.code);
         this.tempC = latestReading.temperature + " C";
         this.beafourt = conversion.beafourt(latestReading.windSpeed) + " bft";
         this.windCompass = conversion.degreesToCompass(latestReading.windDirection);
