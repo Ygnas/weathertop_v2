@@ -8,6 +8,8 @@ const weatherReport = {
         const station = stationCollection.getStation(stationId);
         const latestReading = station.readings[station.readings.length-1];
         this.name = station.name;
+        this.latitude = "Lat: " + station.latitude;
+        this.longitude = "Lng: " + station.longitude;
         if (typeof latestReading == 'undefined') return 0;
         this.code = latestReading.code;
         this.tempC = latestReading.temperature + " C";
