@@ -5,6 +5,7 @@
       "name": "Tramore",
       "latitude": "52.1623500",
       "longitude": "-7.1524400",
+      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
       "readings": [
         {
           "id": "02",
@@ -37,6 +38,7 @@
       "name": "Dunmore",
       "latitude": "52.1499994",
       "longitude": "-6.9833294",
+      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
       "readings": [
         {
           "id": "06",
