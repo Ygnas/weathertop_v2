@@ -17,11 +17,14 @@ const dashboard = {
     response.render("dashboard", viewData);
   },
   addStation(request, response) {
+    const loggedInUser = accounts.getCurrentUser(request);
     const newStation = {
         id: uuid.v1(),
+        userid: loggedInUser.id,
         name: request.body.name,
         readings: []
-    }
+    };
+    logger.debug('Creating a new Station', newStation);
     stationStore.addStation(newStation);
     response.redirect("/dashboard");
   }
