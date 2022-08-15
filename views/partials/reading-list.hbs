@@ -1,6 +1,7 @@
 <table class="ui table">
     <thead>
         <tr>
+            <th>Date/Time</th>
             <th>Code</th>
             <th>Temp</th>
             <th>Wind Speed</th>
@@ -9,8 +10,11 @@
         </tr>
     </thead>
     <tbody>
-        {{#each readings}}
+        {{#each station.readings}}
         <tr>
+            <td>
+                {{date}}
+            </td>
             <td>
                 {{code}}
             </td>
@@ -25,6 +29,11 @@
             </td>
             <td>
                 {{pressure}}
+            </td>
+            <td>
+                <a href="/station/{{../station.id}}/deletereading/{{id}}" class="ui icon button">
+                    <i class="red trash icon"></i>
+                </a>
             </td>
         </tr>
         {{/each}}
