@@ -25,7 +25,8 @@ const station = {
         temperature: request.body.temperature,
         windSpeed: request.body.windSpeed,
         pressure: request.body.pressure,
-        windDirection: request.body.windDirection
+        windDirection: request.body.windDirection,
+        date: new Date().toISOString()
     };
     stationStore.addReading(stationId, newReading);
     response.redirect(`/station/${stationId}`);
