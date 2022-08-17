@@ -13,6 +13,9 @@ const dashboard = {
       title: "WeatherTop Dashboard",
       stations: stationStore.getUserStations(loggedInUser.id),
     };
+    viewData.stations.forEach(station => {
+        station.latestReading = new WeatherReport(station.id);
+    });
     logger.info("about to render", stationStore.getAllStation());
     response.render("dashboard", viewData);
   },
