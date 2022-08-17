@@ -13,6 +13,13 @@ const accounts = {
     response.render('index', viewData);
   },
 
+  edit(request, response) {
+    const user = request.body;
+    userstore.editUser(user);
+    response.cookie('weathertop', user.email);
+    response.redirect('/account');
+  },
+
   login(request, response) {
     const viewData = {
       title: 'Login to the Service',
