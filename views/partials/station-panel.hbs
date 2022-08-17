@@ -1,7 +1,7 @@
 <div class="ui five doubling inverted cards">
     {{>card icon="marker" colour="violet" cardTitle=name value1=latitude value2=longitude}}
     {{>card cardTitle="Weather" colour="red" value1=weather}}
-    {{>card icon="temperature low" colour="blue" cardTitle="Temp" value1=tempC value2=tempF value3=maxTemp value4=minTemp}}
-    {{>card icon="wind" colour="green" cardTitle="Wind" value1=beafourt value2=windCompass value3=windChill value4=maxWind value5=minWind}}
-    {{>card icon="centos" colour="orange" cardTitle="Pressure" value1=pressure value2=maxPressure value3=minPressure}}
+    {{>card icon="temperature low" colour="blue" cardTitle="Temp" value1=tempC value2=tempF value3=maxTemp value4=minTemp trend=tempTrend}}
+    {{>card icon="wind" colour="green" cardTitle="Wind" value1=beafourt value2=windCompass value3=windChill value4=maxWind value5=minWind trend=windTrend}}
+    {{>card icon="centos" colour="orange" cardTitle="Pressure" value1=pressure value2=maxPressure value3=minPressure trend=pressureTrend}}
 </div>

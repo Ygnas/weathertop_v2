@@ -26,6 +26,9 @@ const weatherReport = {
         this.minPressure = "Min: " + conversion.minPressure(station.readings);
         this.tempF = conversion.tempF(latestReading.temperature) + " F";
         this.weather = conversion.currentWeather(this.code);
+        this.tempTrend = conversion.tempTrend(station.readings);
+        this.windTrend = conversion.windTrend(station.readings);
+        this.pressureTrend = conversion.pressureTrend(station.readings);
     }
 };
 
