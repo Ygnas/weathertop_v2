@@ -8,8 +8,8 @@ const weatherReport = {
         const station = stationCollection.getStation(stationId);
         const latestReading = station.readings[station.readings.length-1];
         this.name = station.name;
-        this.latitude = "Lat: " + station.latitude;
-        this.longitude = "Lng: " + station.longitude;
+        this.latitude = "Lat: " + station.latitude.toFixed(2);
+        this.longitude = "Lng: " + station.longitude.toFixed(2);
         if (typeof latestReading == 'undefined') return 0;
         this.code = latestReading.code;
         this.icon = conversion.weatherIcon(this.code);
