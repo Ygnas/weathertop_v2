@@ -13,6 +13,11 @@ const accounts = {
     response.render('index', viewData);
   },
 
+  settings(request, response) {
+    const user = userstore.getUserByEmail(request.cookies.weathertop);
+    response.render('account', user);
+  },
+
   edit(request, response) {
     const user = request.body;
     userstore.editUser(user);
@@ -61,7 +66,7 @@ const accounts = {
   getCurrentUser(request) {
     const userEmail = request.cookies.weathertop;
     return userstore.getUserByEmail(userEmail);
-  },
+  }
 };
 
 module.exports = accounts;
