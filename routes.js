@@ -22,5 +22,7 @@ router.get('/signup', accounts.signup);
 router.get('/logout', accounts.logout);
 router.post('/register', accounts.register);
 router.post('/authenticate', accounts.authenticate);
+router.get("/account", accounts.settings);
+router.post("/account/edit", accounts.edit);
 
 module.exports = router;
