@@ -4,6 +4,7 @@ const logger = require("../utils/logger");
 const stationStore = require("../models/station-store.js");
 const uuid = require("uuid");
 const accounts = require("./accounts");
+const { WeatherReport } = require("../models/weatherReport");
 
 const dashboard = {
   index(request, response) {
@@ -13,7 +14,11 @@ const dashboard = {
       title: "WeatherTop Dashboard",
       stations: stationStore.getUserStations(loggedInUser.id),
     };
-    logger.info("about to render", stationStore.getAllStation());
+    viewData.stations.sort((a,b) => a.name.localeCompare(b.name));
+    viewData.stations.forEach(station => {
+        station.latestReading = new WeatherReport(station.id);
+    });
+    logger.info("about to render", viewData.stations);
     response.render("dashboard", viewData);
   },
   addStation(request, response) {
@@ -29,7 +34,13 @@ const dashboard = {
     logger.debug('Creating a new Station', newStation);
     stationStore.addStation(newStation);
     response.redirect("/dashboard");
-  }
+  },
+  deleteStation(request, response) {
+    const stationId = request.params.id;
+    logger.debug(`Deleting Station ${stationId}`);
+    stationStore.removeStation(stationId);
+    response.redirect("/dashboard");
+  },
 };
 
 module.exports = dashboard;

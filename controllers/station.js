@@ -25,11 +25,19 @@ const station = {
         temperature: request.body.temperature,
         windSpeed: request.body.windSpeed,
         pressure: request.body.pressure,
-        windDirection: request.body.windDirection
+        windDirection: request.body.windDirection,
+        date: new Date().toISOString()
     };
     stationStore.addReading(stationId, newReading);
     response.redirect(`/station/${stationId}`);
-  }
+  },
+  deleteReading(request, response) {
+    const stationId = request.params.id;
+    const readingId = request.params.readingid;
+    logger.debug(`Deleting Reading ${stationId} from Station ${readingId}`);
+    stationStore.removeReading(stationId, readingId);
+    response.redirect("/station/" + stationId);
+  },
 };
 
 module.exports = station;

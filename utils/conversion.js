@@ -130,6 +130,42 @@ const conversion = {
             values.push(reading.pressure);
         });
         return this.maxValue(values);
+    },
+    tempTrend(readings) {
+        let trend = "";
+        if (readings.length > 2) {
+            var arr = readings.slice(0,3);
+            if (arr[0].temperature < arr[1].temperature && arr[1].temperature < arr[2].temperature) {
+                trend = "arrow up";
+            } else if (arr[0].temperature > arr[1].temperature && arr[1].temperature > arr[2].temperature) {
+                trend = "arrow down";
+            }
+        }
+        return trend;
+    },
+    windTrend(readings) {
+        let trend = "";
+        if (readings.length > 2) {
+            var arr = readings.slice(0,3);
+            if (arr[0].windSpeed < arr[1].windSpeed && arr[1].windSpeed < arr[2].windSpeed) {
+                trend = "arrow up";
+            } else if (arr[0].windSpeed > arr[1].windSpeed && arr[1].windSpeed > arr[2].windSpeed) {
+                trend = "arrow down";
+            }
+        }
+        return trend;
+    },
+    pressureTrend(readings) {
+        let trend = "";
+        if (readings.length > 2) {
+            var arr = readings.slice(0,3);
+            if (arr[0].pressure < arr[1].pressure && arr[1].pressure < arr[2].pressure) {
+                trend = "arrow up";
+            } else if (arr[0].pressure > arr[1].pressure && arr[1].pressure > arr[2].pressure) {
+                trend = "arrow down";
+            }
+        }
+        return trend;
     }
 };
 

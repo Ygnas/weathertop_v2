@@ -13,6 +13,18 @@ const accounts = {
     response.render('index', viewData);
   },
 
+  settings(request, response) {
+    const user = userstore.getUserByEmail(request.cookies.weathertop);
+    response.render('account', user);
+  },
+
+  edit(request, response) {
+    const user = request.body;
+    userstore.editUser(user);
+    response.cookie('weathertop', user.email);
+    response.redirect('/account');
+  },
+
   login(request, response) {
     const viewData = {
       title: 'Login to the Service',
@@ -54,7 +66,7 @@ const accounts = {
   getCurrentUser(request) {
     const userEmail = request.cookies.weathertop;
     return userstore.getUserByEmail(userEmail);
-  },
+  }
 };
 
 module.exports = accounts;
