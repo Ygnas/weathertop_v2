@@ -5,6 +5,7 @@ const uuid = require("uuid");
 const axios = require("axios");
 const stationStore = require("../models/station-store.js");
 const { WeatherReport } = require("../models/weatherReport");
+const conversion = require("../utils/conversion");
 
 const station = {
   index(request, response) {
@@ -52,7 +53,7 @@ const station = {
     if (result.status == 200) {
         const currentReading = result.data.current;
         reading.id = uuid.v1();
-        reading.code = currentReading.weather[0].id;
+        reading.code = conversion.openWeatherConditionCodes(currentReading.weather[0].id);
         reading.temperature = currentReading.temp;
         reading.windSpeed = currentReading.wind_speed;
         reading.pressure = currentReading.pressure;
