@@ -61,6 +61,27 @@ const conversion = {
             return 11;
         }
     },
+    openWeatherConditionCodes(code) {
+        if (code == 800) {
+            return 100;
+        } else if (code >= 200 && code < 300) {
+            return 800;
+        } else if (code >= 600 && code < 700) {
+            return 700;
+        } else if (code == 522) {
+            return 500;
+        } else if (code == 520) {
+            return 400;
+        } else if (code >= 500 && code < 600) {
+            return 600;
+        } else if (code >= 801 && code <= 802) {
+            return 200;
+        } else if (code >= 803 && code <= 804) {
+            return 300;
+        } else {
+            return 100;
+        }
+    },
     degreesToCompass(degrees) {
         const directions = ["North", "North North East", "North East",
         "East North East", "East", "East South East", "South East",
