@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title> {{title}} </title>
     <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.4/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.4/dist/semantic.min.js"></script>
-  </head>
-  <body>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+        integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+        crossorigin="" />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->    
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+        integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+        crossorigin=""></script>
+    {{!-- 
+        Frappe charts cannot display pressure properly (https://github.com/frappe/charts/issues/100),
+        So I build my own version of frappe chart that includes (https://github.com/frappe/charts/pull/120) this pull request
+        made by Tobias Kronthaler (https://github.com/kronthto), and it solves my issue.
+    --}}
+    <script src="/frappe-charts.min.umd.js"></script>
+</head>
+
+<body>
     <section class="ui container">
-      {{{body}}}
+        {{{body}}}
     </section>
-  </body>
+</body>
+
 </html>
