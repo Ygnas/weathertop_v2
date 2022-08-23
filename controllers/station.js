@@ -19,7 +19,7 @@ const station = {
     logger.info("about to render", stationStore.getStation(stationId));
     response.render("station", viewData);
   },
-  
+
   addReading(request, response) {
     const stationId = request.params.id;
     const newReading = {
@@ -50,7 +50,8 @@ const station = {
     let reading = {};
     const lat = station.latitude;
     const lng = station.longitude;
-    const api = "0ab783420cda8773a310c625532baf43";
+    // Api code in git history was regenerated, and no longer works
+    const api = process.env.API;
     const requestUrl = `https://pro.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&units=metric&exclude=minutely,hourly&appid=${api}`;
     const result = await axios.get(requestUrl);
     if (result.status == 200) {
