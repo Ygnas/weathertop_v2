@@ -13,8 +13,15 @@
     {{/each}}
     ]
 
+    var bounds = [];
+
     data.forEach(element => {
         var marker = L.marker([element.latitude,element.longitude]).addTo(map);
         marker.bindPopup(element.name);
+        bounds.push([element.latitude, element.longitude])
     });
+
+    map.fitBounds([
+        bounds
+    ]);
 </script>
