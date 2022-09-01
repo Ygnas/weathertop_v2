@@ -1,0 +1,77 @@
+<div class="ui segment" id="chart"></div>
+{{#with station.trendLabels}}
+    <button id="tempbtn" class="ui blue button">Temperature</button>
+    <button id="windbtn" class="ui green button">Wind</button>
+    <button id="pressurebtn" class="ui orange button">Pressure</button>
+{{/with}}
+<script>
+    tempData = {
+        labels: [
+            {{#each station.trendLabels}}
+                "{{this}}",
+            {{/each}}
+        ],
+        datasets: [
+            {
+                name: "Temperature", 
+                chartType: "line",
+                values: [
+                    {{#each station.trends.tempTrend}}
+                        {{this}},
+                    {{/each}}
+                ],
+            }
+        ],
+    };
+    windData = {
+        labels: [
+            {{#each station.trendLabels}}
+                "{{this}}",
+            {{/each}}
+        ],
+        datasets: [
+            {
+                name: "Wind", 
+                chartType: "line",
+                values: [
+                    {{#each station.trends.windTrend}}
+                        {{this}},
+                    {{/each}}
+                ],
+            }
+        ],
+    };
+    pressureData = {
+        labels: [
+            {{#each station.trendLabels}}
+                "{{this}}",
+            {{/each}}
+        ],
+        datasets: [
+            {
+                name: "Pressure", 
+                chartType: "line",
+                values: [
+                    {{#each station.trends.pressureTrend}}
+                        {{this}},
+                    {{/each}}
+                ],
+            }
+        ],
+    };
+
+    {{#with station.trendLabels}}
+        document.getElementById("tempbtn").onclick = function () { chart.update(tempData) };
+        document.getElementById("windbtn").onclick = function () { chart.update(windData) };
+        document.getElementById("pressurebtn").onclick = function () { chart.update(pressureData) };
+
+        const chart = new frappe.Chart("#chart", {
+            title: "Trends",
+            data: tempData,
+            type: "axis-mixed",
+            height: 250,
+            colors: ["blue"],
+            y_axis_exp_based_on_range: true
+        });
+    {{/with}}
+</script>

@@ -1,0 +1,27 @@
+<div id="map" style="height: 360px"></div>
+<script>
+    var map = L.map("map").setView([52.1623500, -7.1524400], 12);
+
+    var tiles = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    }).addTo(map);
+
+    const data = [
+    {{#each stations}}
+       { "latitude" : {{this.latitude}},"longitude" : {{this.longitude}}, "name" : "{{this.name}}" },
+    {{/each}}
+    ]
+
+    var bounds = [];
+
+    data.forEach(element => {
+        var marker = L.marker([element.latitude,element.longitude]).addTo(map);
+        marker.bindPopup(element.name);
+        bounds.push([element.latitude, element.longitude])
+    });
+
+    map.fitBounds([
+        bounds
+    ]);
+</script>
