@@ -1,7 +1,9 @@
 <div class="ui segment" id="chart"></div>
-<button id="tempbtn" class="ui blue button">Temperature</button>
-<button id="windbtn" class="ui green button">Wind</button>
-<button id="pressurebtn" class="ui orange button">Pressure</button>
+{{#with station.trendLabels}}
+    <button id="tempbtn" class="ui blue button">Temperature</button>
+    <button id="windbtn" class="ui green button">Wind</button>
+    <button id="pressurebtn" class="ui orange button">Pressure</button>
+{{/with}}
 <script>
     tempData = {
         labels: [
@@ -58,17 +60,18 @@
         ],
     };
 
-    document.getElementById("tempbtn").onclick = function () { chart.update(tempData) };
-    document.getElementById("windbtn").onclick = function () { chart.update(windData) };
-    document.getElementById("pressurebtn").onclick = function () { chart.update(pressureData) };
+    {{#with station.trendLabels}}
+        document.getElementById("tempbtn").onclick = function () { chart.update(tempData) };
+        document.getElementById("windbtn").onclick = function () { chart.update(windData) };
+        document.getElementById("pressurebtn").onclick = function () { chart.update(pressureData) };
 
-    const chart = new frappe.Chart("#chart", {
-        title: "Trends",
-        data: tempData,
-        type: "axis-mixed",
-        height: 250,
-        colors: ["blue"],
-        y_axis_exp_based_on_range: true
-    });
-
+        const chart = new frappe.Chart("#chart", {
+            title: "Trends",
+            data: tempData,
+            type: "axis-mixed",
+            height: 250,
+            colors: ["blue"],
+            y_axis_exp_based_on_range: true
+        });
+    {{/with}}
 </script>
