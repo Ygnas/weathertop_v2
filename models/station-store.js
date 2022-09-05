@@ -37,7 +37,7 @@ const stationStore = {
     station.readings.push(reading);
     this.store.save();
   },
-  
+
   removeReading(id, readingId) {
     const station = this.getStation(id);
     const readings = station.readings;

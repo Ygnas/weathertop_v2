@@ -10,7 +10,7 @@ const accounts = {
       title: "Login or Signup",
     };
     if (request.cookies.weathertop) {
-        response.redirect("dashboard");
+      response.redirect("dashboard");
     }
     response.render("index", viewData);
   },

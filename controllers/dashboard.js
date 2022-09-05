@@ -36,7 +36,7 @@ const dashboard = {
     stationStore.addStation(newStation);
     response.redirect("/dashboard");
   },
-  
+
   deleteStation(request, response) {
     const stationId = request.params.id;
     logger.debug(`Deleting Station ${stationId}`);
