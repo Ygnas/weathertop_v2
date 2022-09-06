@@ -6,11 +6,17 @@ const axios = require("axios");
 const stationStore = require("../models/station-store.js");
 const { WeatherReport } = require("../models/weatherReport");
 const conversion = require("../utils/conversion");
+const accounts = require("./accounts");
 
 const station = {
   index(request, response) {
     logger.info("station rendering");
     const stationId = request.params.id;
+    const loggedInUser = accounts.getCurrentUser(request);
+    const station = stationStore.getStation(stationId);
+    if (station.userid !== loggedInUser.id) {
+        response.redirect("/dashboard");
+    }
     const viewData = {
       title: "Station Dashboard",
       station: stationStore.getStation(stationId),
