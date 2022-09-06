@@ -26,7 +26,7 @@ const weatherCodeIcons = {
 
 const conversion = {
   tempF(tempC) {
-    return tempC * 1.8 + 32;
+    return (tempC * 1.8 + 32).toPrecision(5);
   },
 
   currentWeather(code) {
